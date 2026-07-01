@@ -1,5 +1,3 @@
-import token
-
 import requests
 
 URL_BASE = "https://reqres.in/api" 
@@ -11,6 +9,24 @@ creds = {
     "email": "eve.holt@reqres.in", 
     "password": "cityslicka"
 }
+def get_users():
+    return requests.get(f"{URL_BASE}/users", headers=HEADERS)
+
+def create_user(name , job):
+    data = {
+        "name": name,
+         "job": job
+    }
+    return requests.post(f"{URL_BASE}/users", headers=HEADERS, json=data)
+
+def login_user(email, password):
+    data = {
+        "email": email,
+        "password": password
+    }
+    return requests.post(f"{URL_BASE}/login", headers=HEADERS, json=data)
+
+
 
 # def get_users():
 #     response = requests.get(f"{URL_BASE}/users", headers=HEADERS)
@@ -23,14 +39,14 @@ creds = {
 
 # get_users()                         
 
-def login_post():
-    response = requests.post(f"{URL_BASE}/login", headers=HEADERS, json=creds)
+# def login_post():
+#     response = requests.post(f"{URL_BASE}/login", headers=HEADERS, json=creds)
 
-    if response.status_code == 200:
-        print(f"codigo de respuesta: {response.status_code}")
-        success = response.json()
-        print(success["token"])
-    else:
-        print(f"Error: {response.status_code}")
+#     if response.status_code == 200:
+#         print(f"codigo de respuesta: {response.status_code}")
+#         success = response.json()
+#         print(success["token"])
+#     else:
+#         print(f"Error: {response.status_code}")
 
-login_post()
+# login_post()
