@@ -19,6 +19,16 @@ def create_user(name , job):
     }
     return requests.post(f"{URL_BASE}/users", headers=HEADERS, json=data)
 
+#PUT = actualizar todo. PATCH = actualizar parcialmente.
+def update_user(name, job,user_id):
+    data = {
+        "name": name,
+        "job": job
+    }
+    return requests.put(f"{URL_BASE}/users/{user_id}", headers=HEADERS, json=data)
+
+def delete_user(user_id):
+
 def login_user(email, password):
     data = {
         "email": email,
