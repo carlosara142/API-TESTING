@@ -12,6 +12,9 @@ creds = {
 def get_users():
     return requests.get(f"{URL_BASE}/users", headers=HEADERS)
 
+def get_one_user(user_id):
+    return requests.get(f"{URL_BASE}/users/{user_id}", headers=HEADERS)
+
 def create_user(name , job):
     data = {
         "name": name,
@@ -28,6 +31,8 @@ def update_user(name, job,user_id):
     return requests.put(f"{URL_BASE}/users/{user_id}", headers=HEADERS, json=data)
 
 def delete_user(user_id):
+    return requests.delete(f"{URL_BASE}/users/{user_id}", headers=HEADERS)
+
 
 def login_user(email, password):
     data = {
